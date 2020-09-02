@@ -1,0 +1,28 @@
+main {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+
+  .card {
+    padding: 10px 20px;
+    width: 40%;
+    border: 1px solid black;
+  }
+}
+
+.stars {
+  display: flex;
+
+  &__item {
+    width: 10px;
+    height: 10px;
+    background-color: transparent;
+    border: 1px solid black;
+    border-radius: 50%;
+
+    &--fill {
+      background-color: yellowgreen;
+    }
+  }
+}
