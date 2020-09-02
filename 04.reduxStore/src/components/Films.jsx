@@ -14,7 +14,9 @@ const Films = () => {
     dispatch(addFilmAction(film))
   }
 
-  console.log('Films ', state)
+  useEffect(() => {
+    console.log('Films ', state)
+  }, [state])
 
   return (
     <div>

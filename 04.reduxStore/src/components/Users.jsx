@@ -13,7 +13,9 @@ const Users = () => {
     dispatch(addUserAction(name))
   }
 
-  console.log('Users ', state)
+  useEffect(() => {
+    console.log('Users ', state)
+  }, [state])
 
   return (
     <div>
