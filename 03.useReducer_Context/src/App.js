@@ -2,13 +2,34 @@ import React, { useState, useReducer, useEffect } from 'react';
 import './App.css';
 import Header from './components/Header';
 import Users from './containers/Users';
+import { getUsers } from './api/users.service';
 import Posts from './containers/Posts/Posts';
+import { getPosts } from './api/posts.service';
+
+const themes = {
+  light: {
+    background: '#f1f3f8',
+    color: '#393b44',
+  },
+
+  dark: {
+    background: '#393b44',
+    color: '#f1f3f8',
+  }
+}
 
 const initialState = {
   // counter: 0,
   // names: [],
-  users: []
+  users: [],
+  posts: [],
+  theme: {
+    type: 'light',
+    themes
+  }
 }
+
+console.log(initialState)
 
 export const Context = React.createContext({});
 
@@ -32,11 +53,24 @@ const reducer = (state, action) => {
         ...state,
         users: action.payload
       }
+    case 'GET_POSTS':
+      return {
+        ...state,
+        posts: action.payload
+      }
     case 'ADD_USER':
       return {
         ...state,
         users: [...state.users, action.payload],
         counter: state.users.length + 1
+      }
+    case 'CHANGE_THEME':
+      return {
+        ...state,
+        theme: {
+          ...state.theme,
+          type: state.theme.type === 'light' ? 'dark' : 'light'
+        }
       }
     default:
       return state
@@ -83,9 +117,33 @@ const reducer = (state, action) => {
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [page, setPage] = useState('/');
+  const [isShowPreloader, setShowPreloader] = useState(true);
 
   useEffect(() => {
     setPage(window.location.pathname)
+  }, []);
+
+  useEffect(() => {
+    getUsers()
+      .then(users => {
+        dispatch({
+          type: "GET_USERS",
+          payload: users,
+        });
+        setShowPreloader(false)
+      })
+      .catch(e => console.error(e));
+
+    getPosts()
+      .then(posts => {
+        dispatch({
+          type: "GET_POSTS",
+          payload: posts,
+        });
+        setShowPreloader(false)
+      })
+      .catch(e => console.error(e))
+
   }, [])
 
   const handleChangePage = (path) => {
@@ -103,7 +161,7 @@ function App() {
   }
 
   return (
-    <Context.Provider value={{ state, dispatch }}>
+    <Context.Provider value={{ state, dispatch, isShowPreloader }}>
       <Header changePage={handleChangePage} />
       {/* <Counter /> */}
       {page === "/users" && <Users />}

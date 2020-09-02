@@ -1,26 +1,15 @@
-import React, { useState, useEffect } from 'react'
-import { getPosts } from '../../api/posts.service'
+import React, { useContext } from 'react'
 import Wrapper from '../../components/Wrapper';
 import PostCart from '../../components/PostCard';
+import { Context } from '../../App'
 import Preloader from '../../components/Preloader';
 
-const Posts = (props) => {
-  const [postsData, setPostsData] = useState([]);
-  const [isShowPreloader, setShowPreloader] = useState(true);
-
-  useEffect(() => {
-    getPosts()
-      .then(posts => {
-        setPostsData(posts)
-        setShowPreloader(false)
-      })
-      .catch(e => console.error(e))
-  }, [])
-
+const Posts = () => {
+  const { state, isShowPreloader } = useContext(Context);
 
   return (
     <Wrapper>
-      {postsData.map(post => <PostCart key={post.id} post={post} />)}
+      {state.posts.map(post => <PostCart key={post.id} post={post} />)}
       {isShowPreloader && <Preloader />}
     </Wrapper>
   );

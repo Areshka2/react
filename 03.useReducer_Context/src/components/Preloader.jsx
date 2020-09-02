@@ -15,7 +15,7 @@ const preloaderStyles = {
 const Preloader = () => {
   return (
     <div style={preloaderStyles}>
-      <img src="https://i.pinimg.com/originals/b9/59/91/b9599180dc4d1298ad0beb1b73730379.gif" alt="preloader" />
+      <img src="https://miro.medium.com/max/978/0*mv8MNRLDNNnt5f72.gif" alt="preloader" />
     </div>
   )
 }
