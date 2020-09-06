@@ -1,0 +1,16 @@
+.item {  
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  color: rgb(99, 97, 97);
+}
+
+.item img {
+  width: 50px;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.item .like {
+  align-self: flex-end;
+}

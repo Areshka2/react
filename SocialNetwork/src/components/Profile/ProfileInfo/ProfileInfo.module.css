@@ -1,0 +1,11 @@
+.content_img {     
+  max-height: 200px;
+  margin: -10px;
+  margin-bottom: 0;
+  overflow: hidden;  
+}
+
+.content_img img {  
+  display: block;  
+  width: 100%;
+}
