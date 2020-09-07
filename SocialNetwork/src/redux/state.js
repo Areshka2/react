@@ -8,6 +8,7 @@ const state = {
       { id: 3, message: 'i am fine too', likeCount: 7, dislikeCount: 2 },
       { id: 4, message: 'Yo', likeCount: 3, dislikeCount: 1 },
     ],
+    newPostText: '',
   },
 
   dialogsPage: {
@@ -38,15 +39,25 @@ const state = {
 
 }
 
-export let addPost = (postMessage) => {
-  let newPost = {
-    id: 5,
-    message: postMessage,
-    likeCount: 0,
-    dislikeCount: 0
-  };
+export let addPost = () => {
+  if (state.profilePage.newPostText) {
+    let newPost = {
+      id: 5,
+      message: state.profilePage.newPostText,
+      likeCount: 0,
+      dislikeCount: 0
+    };
 
-  state.profilePage.posts.push(newPost);
+    state.profilePage.posts.push(newPost);
+    state.profilePage.newPostText = '';
+    renderReactDOM(state);
+  } else {
+    alert("Enter text")
+  }
+}
+
+export let updatePostDate = (newText) => {
+  state.profilePage.newPostText = newText;
   renderReactDOM(state);
 }
 
