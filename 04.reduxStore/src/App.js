@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Users from './components/Users';
 import Films from './components/Films';
 import store from './store/store'
 import { Provider } from 'react-redux';
+import Auth from './components/Auth';
+// import A
 
 function App() {
   const [page, setPage] = useState('users');
@@ -15,9 +17,10 @@ function App() {
     <Provider store={store}>
       <div className="App">
         {/* <button onClick={() => console.log(store.getState())}>Get Store</button> */}
-        <button onClick={handleChangePage}>{page === "users" ? 'Show films' : 'Show users'}</button>
+        {/* <button onClick={handleChangePage}>{page === "users" ? 'Show films' : 'Show users'}</button>
         {page === 'users' && < Users />}
-        {page === 'films' && <Films />}
+        {page === 'films' && <Films />} */}
+        <Auth />
       </div>
     </Provider>
   );

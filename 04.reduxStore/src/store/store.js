@@ -1,4 +1,6 @@
-import { combineReducers, createStore } from 'redux';
+import { combineReducers, createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import thunk from 'redux-thunk';
 import userReducer from './users/reducer';
 import filmReducer from './films/reducer';
 
@@ -7,7 +9,7 @@ const rootReducer = combineReducers({
   films: filmReducer,
 })
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
 store.subscribe(() => store.getState())
 
