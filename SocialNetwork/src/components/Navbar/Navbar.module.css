@@ -1,0 +1,26 @@
+ul {
+  margin: 0; 
+  padding: 0;
+  list-style: none;
+}
+
+.item,
+.item a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 22px;
+}
+
+.item a:hover {
+  color: #fff;
+  text-decoration: none;
+  font-size: 22px;
+  color: rgb(243, 247, 45);
+  transition: color .2s ease;
+}
+
+.item a.active {
+  color: rgb(243, 247, 45);
+  font-weight: 500;
+}
+

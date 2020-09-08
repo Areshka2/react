@@ -1,0 +1,11 @@
+.friend p {
+  margin-top: 5px;
+}
+
+.friend__avatar {
+  width: 35px;
+  height: 35px;
+  margin: 0 auto;
+  background-color: rgb(245, 190, 9);
+  border-radius: 50%;
+}

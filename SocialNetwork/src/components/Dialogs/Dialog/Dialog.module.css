@@ -1,0 +1,29 @@
+.dialog {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+  font-size: 18px;
+  color: rgba(37, 37, 37, 0.7);  
+}
+
+.dialog a {
+  color: rgba(37, 37, 37, 0.7);
+  text-decoration: none; 
+}
+
+.dialog a.active {
+  font-size: 20px;
+  color: #000;
+}
+
+.dialog::before {
+  position: absolute;
+  content:"";
+  top: 50%;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  background-color: rgba(37, 37, 37, 0.7);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
