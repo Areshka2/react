@@ -27,6 +27,7 @@ const state = {
       { id: 4, message: 'Yo', name: 'Sasha' },
       { id: 5, message: 'Yo', name: 'I' },
     ],
+    newMessageText: ''
   },
 
   sidebar: {
@@ -39,6 +40,7 @@ const state = {
 
 }
 
+//* Add New Post
 export let addPost = () => {
   if (state.profilePage.newPostText) {
     let newPost = {
@@ -51,13 +53,31 @@ export let addPost = () => {
     state.profilePage.posts.push(newPost);
     state.profilePage.newPostText = '';
     renderReactDOM(state);
-  } else {
-    alert("Enter text")
   }
 }
 
+//* Change New Post
 export let updatePostDate = (newText) => {
   state.profilePage.newPostText = newText;
+  renderReactDOM(state);
+}
+
+export const addNewMessage = () => {
+  if (state.dialogsPage.newMessageText) {
+    let newMessage = {
+      id: 6,
+      message: state.dialogsPage.newMessageText,
+      name: 'I'
+    }
+
+    state.dialogsPage.messages.push(newMessage)
+    state.dialogsPage.newMessageText = '';
+    renderReactDOM(state);
+  }
+}
+
+export const updateMessageDate = (newText) => {
+  state.dialogsPage.newMessageText = newText;
   renderReactDOM(state);
 }
 
