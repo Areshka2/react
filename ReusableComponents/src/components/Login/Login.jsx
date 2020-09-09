@@ -55,7 +55,7 @@ const Login = () => {
   } = state;
   console.log(state)
   return (
-    <>
+    <form>
       {submitted ? (<p>Welcome onboard, {username}!</p>) :
         (
           <>
@@ -94,7 +94,7 @@ const Login = () => {
           </>
         )
       }
-    </>
+    </form>
   )
 }
 

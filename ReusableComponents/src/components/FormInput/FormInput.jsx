@@ -15,8 +15,8 @@ const FormInput = ({
 }) => {
 
   return (
-    <>
-      <label htmlFor={name}>{label}</label>
+    <div>
+      <label htmlFor={name}>{label} </label>
       <input
         id={name}
         className={className}
@@ -27,8 +27,8 @@ const FormInput = ({
         onChange={onChange}
         style={error && { border: 'solid 1px red' }}
       />
-      {error && <p>{error}</p>}
-    </>
+      {error && <div>{error}</div>}
+    </div>
   )
 }
 
@@ -40,7 +40,7 @@ FormInput.defaultProps = {
 FormInput.propTypes = {
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,  
+  placeholder: PropTypes.string.isRequired,
   className: PropTypes.string,
   value: PropTypes.any,
   onChange: PropTypes.func
