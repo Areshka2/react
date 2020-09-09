@@ -1,38 +1,102 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { registrationThunk } from '../store/users/thunks'
+import { useDispatch } from 'react-redux';
+import { registrationThunk, loginThunk } from '../store/users/thunks'
 
 const Login = ({ handleChangePage }) => {
   const dispatch = useDispatch()
-  
+
+  const [fieldsState, setFieldsState] = useState({
+    email: '',
+    password: '',
+  })
+
+  const handleChangeInput = e => {
+    const { name, value } = e.target;
+    setFieldsState({
+      ...fieldsState,
+      [name]: value,
+    })
+  }
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    dispatch(loginThunk(fieldsState))
+  }
+
   const handleGetToReg = (e) => {
     e.preventDefault()
     handleChangePage(false)
   }
 
   return (
-    <form>
-      <input type="text" name="" placeholder="Enter name" />
-      <input type="password" name="" placeholder="Enter password" />
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        name="email"
+        placeholder="Enter Email"
+        onChange={handleChangeInput}
+      />
+      <input
+        type="password"
+        name="password"
+        placeholder="Enter password"
+        onChange={handleChangeInput}
+      />
       <button type="submit">Login</button>
-      <a onClick={handleGetToReg}>Login</a>
+      <a href="/#" onClick={handleGetToReg}>Registration</a>
     </form>
   )
 }
 
 const Registration = ({ handleChangePage }) => {
+  const dispatch = useDispatch();
+
+  const [fieldsState, setFieldsState] = useState({
+    name: '',
+    email: '',
+    password: '',
+  })
+
+  const handleChangeInput = e => {
+    const { name, value } = e.target;
+    setFieldsState({
+      ...fieldsState,
+      [name]: value,
+    })
+  }
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    dispatch(registrationThunk(fieldsState))
+  }
+
   const handleGetToLogin = (e) => {
     e.preventDefault()
     handleChangePage(true)
   }
 
   return (
-    <form>
-      <input type="text" name="" placeholder="Enter name" />
-      <input type="email" name="" placeholder="Enter email" />
-      <input type="password" name="" placeholder="Enter password" />
+    <form onChange={handleSubmit}>
+      <input
+        type="text"
+        name="text"
+        placeholder="Enter name"
+        onChange={handleChangeInput}
+      />
+      <input
+        type="email"
+        name="email"
+        placeholder="Enter email"
+        onChange={handleChangeInput}
+      />
+      <input
+        type="password"
+        name=""
+        placeholder="Enter password"
+        onChange={handleChangeInput}
+      />
       <button type="submit">Registration</button>
-      <a onClick={handleGetToLogin}>Registration</a>
+      <a href="/#" onClick={handleGetToLogin}>Login</a>
     </form>
   )
 }

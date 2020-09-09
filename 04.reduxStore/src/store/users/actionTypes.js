@@ -1,4 +1,6 @@
 export default {
-  ADD_USER: "ADD_USER",
-  GET_USERS: "GET_USERS"
-}
+  ADD_USER: 'ADD_USER',
+  GET_USERS: 'GET_USERS',
+  LOGIN_USER: 'LOGIN_USER',
+  LOGOUT_USER: 'LOGOUT_USER',
+} 

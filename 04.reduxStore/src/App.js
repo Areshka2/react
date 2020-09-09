@@ -1,39 +1,30 @@
-import React, { useState } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-import './App.css';
-import Users from './components/Users';
-import Films from './components/Films';
-import store from './store/store'
+import React from 'react';
 import { Provider } from 'react-redux';
-import Auth from './components/Auth';
-// import A
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route,
+//   Link
+// } from "react-router-dom";
+import store from './store/store'
+import Router from './components/Router';
+// import Auth from './components/Auth';
+import './App.css';
+
 
 function App() {
-  // const [page, setPage] = useState('users');
-  // const handleChangePage = () => {
-  //   page === 'users' ? setPage('films') : setPage('users')
-  // }
-
   return (
     <Provider store={store}>
-      <Router>
+      {/* <Router> */}
         <div className="App">
-          <Link to="/users">Users</Link>
+          <Router />
+          {/* <Link to="/users">Users</Link>
           <Link to="/login">Login</Link>
           <Route exact path="/" render={(props) => <h1>Hello</h1>} />
           <Route path="/users" render={(props) => <Users />} />
-          <Route path="/login" render={(props) => <Auth />} />
-          {/* <button onClick={() => console.log(store.getState())}>Get Store</button> */}
-          {/* <button onClick={handleChangePage}>{page === "users" ? 'Show films' : 'Show users'}</button>
-        {page === 'users' && < Users />}
-        {page === 'films' && <Films />} */}
+          <Route path="/login" render={(props) => <Auth />} /> */}
         </div>
-      </Router>
+      {/* </Router> */}
     </Provider>
   );
 }

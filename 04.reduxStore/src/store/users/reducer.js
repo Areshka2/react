@@ -27,6 +27,27 @@ const userReducer = (state = createInitialState(), action) => {
         usersList: action.payload,
       }
     // localStorage.setItem('usersList', JSON.stringify(state))
+    case ActionTypes.LOGIN_USER:
+      return {
+        ...state,
+        currentUser: {
+          auth: true,
+          access_token: action.payload,
+        }
+      }
+    case ActionTypes.LOGOUT_USER:
+      return {
+        ...state,
+        currentUser: {
+          auth: false,
+          access_token: '',
+        }
+      }
+    case "ADD_HABITS":
+      return {
+        ...state,
+        habits: action.payload
+      }
 
     default:
       return state;
