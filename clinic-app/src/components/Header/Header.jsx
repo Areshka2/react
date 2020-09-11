@@ -20,7 +20,7 @@ const Header = ({ title, userName, className, renderIcon }) => {
               {userName}
             </div>
           )}
-          <a className='btn btn-primary header__exitBtn'>
+          <a href='#s' className='btn btn-primary header__exitBtn'>
             Выйти
           </a>
         </div>

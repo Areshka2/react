@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import { map } from 'underscore';
 
 import Header from '../Header';
 
-import { ReactComponent as User } from '../../images/user.svg'
+// import { ReactComponent as User } from '../../images/user.svg'
 import { ReactComponent as Star } from '../../images/star.svg'
-import { ReactComponent as Nurse } from '../../images/nurse.svg'
+// import { ReactComponent as Nurse } from '../../images/nurse.svg'
 import { ReactComponent as House } from '../../images/house.svg'
 import { ReactComponent as Clients } from '../../images/clients.svg'
 import { ReactComponent as Messages } from '../../images/messages.svg'
