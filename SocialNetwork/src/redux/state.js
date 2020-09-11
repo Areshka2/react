@@ -1,4 +1,4 @@
-import renderReactDOM from '../render'
+let renderReactDOM = () => { }
 
 const state = {
   profilePage: {
@@ -40,6 +40,10 @@ const state = {
 
 }
 
+export const subscribe = (observer) => {
+  renderReactDOM = observer;
+}
+
 //* Add New Post
 export let addPost = () => {
   if (state.profilePage.newPostText) {
@@ -52,14 +56,14 @@ export let addPost = () => {
 
     state.profilePage.posts.push(newPost);
     state.profilePage.newPostText = '';
-    renderReactDOM(state);
+    renderReactDOM();
   }
 }
 
 //* Change New Post
 export let updatePostDate = (newText) => {
   state.profilePage.newPostText = newText;
-  renderReactDOM(state);
+  renderReactDOM();
 }
 
 export const addNewMessage = () => {
@@ -72,13 +76,13 @@ export const addNewMessage = () => {
 
     state.dialogsPage.messages.push(newMessage)
     state.dialogsPage.newMessageText = '';
-    renderReactDOM(state);
+    renderReactDOM();
   }
 }
 
 export const updateMessageDate = (newText) => {
   state.dialogsPage.newMessageText = newText;
-  renderReactDOM(state);
+  renderReactDOM();
 }
 
 export default state;
