@@ -17,12 +17,31 @@ function App() {
   })
 
   const counterIncrement = () => {
+    // setCounter(counter + 1);
+    // setCounter(counter + 1); так не увеличит на 2
+
     setCounter(prevCounter => prevCounter + 1);
+    setCounter(prevCounter => prevCounter + 1); // а так увеличит
   }
 
   const counterDecrement = () => {
     setCounter(counter - 1);
   }
+
+  const updateTitle = () => {
+    setState({ ...state, title: 'new title' })
+  }
+
+  // ИЛИ 
+
+  // const updateTitle = () => {
+  //   setState((prev) => {
+  //     return {
+  //       ...prev,
+  //       title: 'new title'
+  //     }
+  //   })
+  // }
 
   return (
     <div>
@@ -33,7 +52,7 @@ function App() {
       <pre>
         {JSON.stringify(state, null, 2)}
       </pre>
-      <button className="btn btn-warning" onClick={() => { setState({...state, title: 'new title' }) }}>Change</button>
+      <button className="btn btn-warning" onClick={updateTitle}>Change</button>
     </div>
   );
 }

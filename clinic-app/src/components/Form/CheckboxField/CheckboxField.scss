@@ -1,0 +1,15 @@
+.checkbox-field {
+  &__label {
+    color: #333333;
+    font-size: 14px;
+    font-weight: 400;
+    vertical-align: middle;
+  }
+
+  &__heckbox {
+    height: 15px;
+    width: 15px;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+}

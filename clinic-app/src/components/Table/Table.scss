@@ -1,0 +1,31 @@
+.table-container {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.table {
+  &__header {
+    background-color: #424242;
+    color: white;
+    
+    th {
+      border: none;
+    }
+  }
+
+  tbody {
+    td {
+      border: none;
+    }
+
+    tr {
+      &:nth-of-type(odd) {
+        background-color: white;
+      }
+
+      &:nth-of-type(even) {
+        background-color: #eeeeee;
+      }
+    }    
+  }
+}
