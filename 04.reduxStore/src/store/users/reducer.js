@@ -4,7 +4,7 @@ const createInitialState = () => {
   // const state = JSON.parse(localStorage.getItem('usersList'))
   // if (state) return state;
   return {
-    curentUser: {
+    currentUser: {
       auth: false,
       access_token: '',
     },
