@@ -9,11 +9,11 @@ const Users = () => {
 
   useEffect(() => {
     dispatch(getUsersThunk());
-  }, [])
+  })
 
   return (
     <div>
-      Users    
+      Users
     </div>
   );
 }
