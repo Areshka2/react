@@ -30,18 +30,22 @@ const Login = ({ handleChangePage }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="email"
-        placeholder="Enter Email"
-        onChange={handleChangeInput}
-      />
-      <input
-        type="password"
-        name="password"
-        placeholder="Enter password"
-        onChange={handleChangeInput}
-      />
+      <div>
+        <input
+          type="text"
+          name="email"
+          placeholder="Enter Email"
+          onChange={handleChangeInput}
+        />
+      </div>
+      <div>
+        <input
+          type="password"
+          name="password"
+          placeholder="Enter password"
+          onChange={handleChangeInput}
+        />
+      </div>
       <button type="submit">Login</button>
       <a href="/#" onClick={handleGetToReg}>Registration</a>
     </form>
@@ -77,24 +81,30 @@ const Registration = ({ handleChangePage }) => {
 
   return (
     <form onChange={handleSubmit}>
-      <input
-        type="text"
-        name="text"
-        placeholder="Enter name"
-        onChange={handleChangeInput}
-      />
-      <input
-        type="email"
-        name="email"
-        placeholder="Enter email"
-        onChange={handleChangeInput}
-      />
-      <input
-        type="password"
-        name=""
-        placeholder="Enter password"
-        onChange={handleChangeInput}
-      />
+      <div>
+        <input
+          type="text"
+          name="name"
+          placeholder="Enter name"
+          onChange={handleChangeInput}
+        />
+      </div>
+      <div>
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter email"
+          onChange={handleChangeInput}
+        />
+      </div>
+      <div>
+        <input
+          type="password"
+          name="password"
+          placeholder="Enter password"
+          onChange={handleChangeInput}
+        />
+      </div>
       <button type="submit">Registration</button>
       <a href="/#" onClick={handleGetToLogin}>Login</a>
     </form>
