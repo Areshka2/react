@@ -41,6 +41,6 @@ export const registrationFetch = async userData => {
 }
 
 export const habitsFetch = async () => {
-  const { data } = await axios.post('https://api-habit.herokuapp.com/habits');
+  const { data } = await axios.get('https://api-habit.herokuapp.com/habits');
   return data;
 }
