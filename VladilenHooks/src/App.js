@@ -1,26 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { Main } from './components/Main';
-import { Alert } from './components/Alert';
+import Main from './components/Main';
+import Alert from './components/Alert/Alert';
+import AlertProvider from './components/Alert/AlertContext'
 
 import './App.css';
 
-export const Context = React.createContext()
-
 function App() {
-  const [isShowAlert, setIsShowAlert] = useState(false);
-
-  const toogleAlert = () => {
-    setIsShowAlert(!isShowAlert)
-  }
-
+ 
   return (
-    <Context.Provider value={isShowAlert}>
+    <AlertProvider>
       <div className={'container pt-3'}>
         <Alert />
-        <Main toogleAlert={toogleAlert} />
+        <Main toogleAlert={() => {}} />
       </div>
-    </Context.Provider>
+    </AlertProvider>
   );
 }
 
