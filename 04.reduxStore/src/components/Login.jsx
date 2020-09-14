@@ -4,7 +4,9 @@ import { useDispatch } from 'react-redux';
 import { useForm } from "react-hook-form";
 
 import { loginThunk } from '../store/users/thunks'
-import FieldContainer from './Router/FieldContainer';
+import FieldContainer from './FieldContainer';
+
+import { emailValidationData, passwordValidationData } from '../constants/formPatterns'
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -29,7 +31,7 @@ const Login = () => {
           type="text"
           name="email"
           placeholder="Enter Email"
-          ref={register({ required: true })}
+          ref={register(emailValidationData)}
         />
       </FieldContainer>
       <FieldContainer label='Password' error={errors.password}>
@@ -37,7 +39,7 @@ const Login = () => {
           type="password"
           name="password"
           placeholder="Enter password"
-          ref={register({ required: true })}
+          ref={register(passwordValidationData)}
         />
       </FieldContainer>
       <button type="submit">Login</button>

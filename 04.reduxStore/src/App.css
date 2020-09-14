@@ -39,14 +39,24 @@
 }
 
 .field-wrapper {
-  margin-bottom: 10px;  
+  margin-bottom: 10px;
 }
 
-.field-wrapper input {  
+.field-wrapper input {
   padding: 5px;
+  outline: none;
+  border: 2px solid rgb(85, 84, 84);
+}
+
+.field-wrapper--error input {
+  border-color: rgb(211, 28, 28);
 }
 
 .users__list {
   list-style: none;
   text-align: left;
+}
+
+.error__message {
+  color: rgb(211, 28, 28);
 }
