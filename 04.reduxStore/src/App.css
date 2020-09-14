@@ -38,8 +38,11 @@
   }
 }
 
-input {
-  margin-bottom: 10px;
+.field-wrapper {
+  margin-bottom: 10px;  
+}
+
+.field-wrapper input {  
   padding: 5px;
 }
 
