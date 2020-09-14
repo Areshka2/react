@@ -1,40 +1,45 @@
-import React, { useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
 import { Link } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { useForm } from "react-hook-form";
 
 import { loginThunk } from '../store/users/thunks'
+import FieldContainer from './Router/FieldContainer';
 
 const Login = () => {
   const dispatch = useDispatch();
-  const emailRef = useRef(null);
-  const passwordRef = useRef(null);
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  const { register, handleSubmit, errors } = useForm();
+
+  const handleOnSubmit = data => {
+    console.log(data);
+
     dispatch(loginThunk({
-      email: emailRef.current.value,
-      password: passwordRef.current.value,
+      email: data.email,
+      password: data.password,
     }))
   }
 
+  console.log(errors)
+
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
+    <form onSubmit={handleSubmit(handleOnSubmit)}>
+      <FieldContainer label='Email' error={errors.email}>
         <input
           type="text"
           name="email"
           placeholder="Enter Email"
-          ref={emailRef}
+          ref={register({ required: true })}
         />
-      </div>
-      <div>
+      </FieldContainer>
+      <FieldContainer label='Password' error={errors.password}>
         <input
           type="password"
           name="password"
           placeholder="Enter password"
-          ref={passwordRef}
+          ref={register({ required: true })}
         />
-      </div>
+      </FieldContainer>
       <button type="submit">Login</button>
       <Link to='/registration'>Registration</Link>
     </form>
