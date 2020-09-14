@@ -24,7 +24,10 @@ export const loginThunk = (userData) => {
 }
 
 export const logoutThunk = () => {
-  return async (dispatch) => dispatch(logoutAction())
+  return async (dispatch) => {
+    localStorage.removeItem('access_token');
+    dispatch(logoutAction())
+  }
 }
 
 export const habitsThunk = () => {
