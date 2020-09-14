@@ -27,14 +27,17 @@ const userReducer = (state = createInitialState(), action) => {
         usersList: action.payload,
       }
     // localStorage.setItem('usersList', JSON.stringify(state))
+
     case ActionTypes.LOGIN_USER:
       return {
         ...state,
         currentUser: {
           auth: true,
           access_token: action.payload,
+          role: 'ADMIN',
         }
       }
+
     case ActionTypes.LOGOUT_USER:
       return {
         ...state,
@@ -43,6 +46,7 @@ const userReducer = (state = createInitialState(), action) => {
           access_token: '',
         }
       }
+
     case "ADD_HABITS":
       return {
         ...state,
