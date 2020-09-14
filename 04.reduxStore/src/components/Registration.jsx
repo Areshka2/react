@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from "react-router-dom";
 
@@ -6,24 +6,17 @@ import { registrationThunk } from '../store/users/thunks'
 
 const Registration = () => {
   const dispatch = useDispatch();
-
-  const [fieldsState, setFieldsState] = useState({
-    name: '',
-    email: '',
-    password: '',
-  })
-
-  const handleChangeInput = e => {
-    const { name, value } = e.target;
-    setFieldsState({
-      ...fieldsState,
-      [name]: value,
-    })
-  }
+  const nameRef = useRef(null);
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(registrationThunk(fieldsState))
+    dispatch(registrationThunk({
+      name: nameRef.current.value,
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+    }))
   }
 
   return (
@@ -33,7 +26,7 @@ const Registration = () => {
           type="text"
           name="name"
           placeholder="Enter name"
-          onChange={handleChangeInput}
+          ref={nameRef}
         />
       </div>
       <div>
@@ -41,7 +34,7 @@ const Registration = () => {
           type="email"
           name="email"
           placeholder="Enter email"
-          onChange={handleChangeInput}
+          ref={emailRef}
         />
       </div>
       <div>
@@ -49,7 +42,7 @@ const Registration = () => {
           type="password"
           name="password"
           placeholder="Enter password"
-          onChange={handleChangeInput}
+          ref={passwordRef}
         />
       </div>
       <button type="submit">Registration</button>

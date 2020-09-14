@@ -1,28 +1,20 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from "react-router-dom";
 
 import { loginThunk } from '../store/users/thunks'
 
 const Login = () => {
-  const dispatch = useDispatch()
-
-  const [fieldsState, setFieldsState] = useState({
-    email: '',
-    password: '',
-  })
-
-  const handleChangeInput = e => {
-    const { name, value } = e.target;
-    setFieldsState({
-      ...fieldsState,
-      [name]: value,
-    })
-  }
+  const dispatch = useDispatch();
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(loginThunk(fieldsState))
+    dispatch(loginThunk({
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+    }))
   }
 
   return (
@@ -32,7 +24,7 @@ const Login = () => {
           type="text"
           name="email"
           placeholder="Enter Email"
-          onChange={handleChangeInput}
+          ref={emailRef}
         />
       </div>
       <div>
@@ -40,7 +32,7 @@ const Login = () => {
           type="password"
           name="password"
           placeholder="Enter password"
-          onChange={handleChangeInput}
+          ref={passwordRef}
         />
       </div>
       <button type="submit">Login</button>
