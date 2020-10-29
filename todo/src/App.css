@@ -1,0 +1,16 @@
+.wrapper {
+  width: 600px;
+  padding-top: 5rem;
+  margin: 0 auto;
+}
+
+.rm-todo {
+  font-size: 22px;
+  line-height: 1;
+  color: #fff;
+  background: red;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
