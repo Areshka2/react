@@ -5,21 +5,28 @@ import ToDoItem from './ToDoItem';
 const styles = {
   ul: {
     margin: 0,
-    padding: 0,   
+    padding: 0,
     listStyle: "none",
   }
 }
 
-const ToDoList = ({todos}) => {
+const ToDoList = ({ todos, onToggle }) => {
   return (
     <ul style={styles.ul}>
-      { todos.map((todo, index) => <ToDoItem index={index} todo={todo} key={todo.id} />) }
+      { todos.map((todo, index) =>
+        <ToDoItem
+          index={index}
+          todo={todo}
+          key={todo.id}
+          handleChange={onToggle}
+        />)}
     </ul>
   )
 }
 
 ToDoList.propTypes = {
-  todos: PropTypes.arrayOf(PropTypes.object).isRequired
+  todos: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onToggle: PropTypes.func.isRequired
 }
 
 export default ToDoList;
