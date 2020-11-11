@@ -1,0 +1,10 @@
+.note {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+
+  strong {
+    margin-right: 1rem;
+  }
+}

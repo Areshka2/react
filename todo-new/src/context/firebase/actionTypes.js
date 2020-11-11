@@ -1,0 +1,6 @@
+export default {
+  SHOW_LOADER: "SHOW_LOADER",
+  GET_NOTES: "GET_NOTES",
+  ADD_NOTE: "ADD_NOTE",
+  REMOVE_NOTE: "REMOVE_NOTE",
+};
