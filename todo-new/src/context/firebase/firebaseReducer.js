@@ -12,6 +12,7 @@ export const firebaseReducer = (state, action) => {
       return {
         ...state,
         notes: action.payload,
+        loading: false,
       };
 
     case actionTypes.ADD_NOTE:

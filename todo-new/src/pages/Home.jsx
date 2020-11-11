@@ -1,16 +1,29 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import Form from "../components/Form";
+import Loader from "../components/Loader";
 import Notes from "../components/Notes";
+import { FirebaseContext } from "../context/firebase/firebaseContext";
 
 const Home = () => {
-  const notes = new Array(3)
-    .fill("")
-    .map((_, i) => ({ id: i, title: `Note ${i + 1}` }));
+  const { notes, loading, fetchNotes, showLoader } = useContext(
+    FirebaseContext
+  );
+
+  useEffect(() => {
+    fetchNotes();
+    
+  }, []);
+
   return (
     <>
       <Form />
       <hr />
-      <Notes notes={notes} />
+      {loading && <Loader />}
+      {notes.length ? (
+        <Notes notes={notes} />
+      ) : loading ? null : (
+        <p style={{ textAlign: "center" }}>No notes!!!</p>
+      )}
     </>
   );
 };
