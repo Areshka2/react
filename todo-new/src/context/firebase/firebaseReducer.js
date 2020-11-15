@@ -18,7 +18,7 @@ export const firebaseReducer = (state, action) => {
     case actionTypes.ADD_NOTE:
       return {
         ...state,
-        notes: [...state, action.payload],
+        notes: [...state.notes, action.payload],
       };
 
     case actionTypes.REMOVE_NOTE:

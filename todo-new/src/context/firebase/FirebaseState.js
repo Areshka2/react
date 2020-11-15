@@ -18,12 +18,13 @@ export const FirebaseState = ({ children }) => {
   const fetchNotes = async () => {
     showLoader();
     const { data } = await axios.get(`${API_CONFIG.baseUrl}/notes.json`);
-    console.log(data);
-    const payload = Object.keys(data).map((key) => {
-      return { ...data[key], id: key };
-    });
+    const payload = data
+      ? Object.keys(data).map((key) => {
+          return { ...data[key], id: key };
+        })
+      : [];
 
-    dispatch({ type: actionTypes.GET_NOTES, payload });    
+    dispatch({ type: actionTypes.GET_NOTES, payload });
   };
 
   const addNote = async (title) => {
@@ -33,13 +34,15 @@ export const FirebaseState = ({ children }) => {
     };
 
     const { data } = await axios.post(`${API_CONFIG.baseUrl}/notes.json`, note);
-    dispatch({ type: actionTypes.ADD_NOTE, payload: data });
-    console.log("addNote", data);
+    dispatch({
+      type: actionTypes.ADD_NOTE,
+      payload: { ...note, id: data.name },
+    });
   };
 
   const removeNote = async (id) => {
     await axios.delete(`${API_CONFIG.baseUrl}/notes/${id}.json`);
-
+    
     dispatch({
       type: actionTypes.REMOVE_NOTE,
       payload: id,

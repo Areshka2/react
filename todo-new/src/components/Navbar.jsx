@@ -4,9 +4,9 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a className="navbar-brand" href="?#">
+      <NavLink to="/" exact className="navbar-brand">
         ToDo App
-      </a>
+      </NavLink>
       <button
         className="navbar-toggler d-lg-none"
         type="button"

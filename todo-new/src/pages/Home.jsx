@@ -5,13 +5,10 @@ import Notes from "../components/Notes";
 import { FirebaseContext } from "../context/firebase/firebaseContext";
 
 const Home = () => {
-  const { notes, loading, fetchNotes, showLoader } = useContext(
-    FirebaseContext
-  );
+  const { notes, loading, fetchNotes, removeNote } = useContext(FirebaseContext);
 
   useEffect(() => {
     fetchNotes();
-    
   }, []);
 
   return (
@@ -20,7 +17,7 @@ const Home = () => {
       <hr />
       {loading && <Loader />}
       {notes.length ? (
-        <Notes notes={notes} />
+        <Notes notes={notes} onRemove={removeNote} />
       ) : loading ? null : (
         <p style={{ textAlign: "center" }}>No notes!!!</p>
       )}

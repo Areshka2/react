@@ -1,31 +1,49 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
+import { CSSTransition } from "react-transition-group";
 import { AlertContext } from "../../context/alert/alertContext";
+
+const CustomCSSTransition = ({ children, ...props }) => {
+  const nodeRef = useRef(null);
+
+  return (
+    <CSSTransition
+      nodeRef={nodeRef}
+      timeout={{
+        enter: 700,
+        exit: 500,
+      }}
+      classNames="alert"
+      mountOnEnter
+      unmountOnExit
+      {...props}
+    >
+      <div ref={nodeRef}>{children}</div>
+    </CSSTransition>
+  );
+};
 
 const Alert = () => {
   const { alert, hideAlert } = useContext(AlertContext);
 
-  if (!alert.visible) {
-    return null;
-  }
-
   return (
-    <div
-      className={`alert alert-${
-        alert.type || "warning"
-      } alert-dismissible fade show mt-3`}
-      role="alert"
-    >
-      <strong>Attention!</strong> {alert.text}
-      <button
-        type="button"
-        className="close"
-        data-dismiss="alert"
-        aria-label="Close"
-        onClick={hideAlert}
+    <CustomCSSTransition in={alert.visible}>
+      <div
+        className={`alert alert-${
+          alert.type || "warning"
+        } alert-dismissible mt-3`}
       >
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
+        <strong>Attention!</strong> {alert.text}
+        <button
+          type="button"
+          className="close"
+          data-dismiss="alert"
+          aria-label="Close"
+          onClick={hideAlert}
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </CustomCSSTransition>
   );
 };
 
